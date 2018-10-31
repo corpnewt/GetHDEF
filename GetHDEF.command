@@ -119,7 +119,17 @@ def main():
             hlist.append(d)
     # Print!
     for h in hlist:
-        print("{}:\n".format(h['name']))
+        # Get the PciRoot location
+        try:
+            locs = h['name'].split("@")[1].split(",")
+            loc = "PciRoot(0x0)/Pci(0x{},0x{})".format(locs[0],locs[1])
+        except:
+            loc = None
+            pass
+        if loc:
+            print("{} - {}:\n".format(h['name'], loc))
+        else:
+            print("{}:\n".format(h['name']))
         # Get the longest key
         longest = max(map(len, h['parts']))
         for k in h["parts"]:
