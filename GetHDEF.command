@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import os, subprocess, shlex, datetime, sys, pprint
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
